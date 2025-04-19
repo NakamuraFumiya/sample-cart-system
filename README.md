@@ -1,7 +1,7 @@
 # sample-cart-system
 
-## start server
+## start api server
 
 ```
-go run main.go
+go run cmd/apiserver/main.go
 ```

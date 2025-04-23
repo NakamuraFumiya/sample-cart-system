@@ -3,8 +3,7 @@ include .env
 MYSQL_HOST ?= 127.0.0.1 # 外部から値を上書きできるようにする
 MYSQL_PORT ?= 3306
 
-export MYSQL_PWD=$(MYSQL_PASSWORD) # warningを出さないように環境変数 MYSQL_PWD を使う
-MYSQL_DUMP_CMD = mysqldump -h $(MYSQL_HOST) -P $(MYSQL_PORT) -u $(MYSQL_USER)
+MYSQL_DUMP_CMD = mysqldump -h $(MYSQL_HOST) -P $(MYSQL_PORT) -u $(MYSQL_USER) -p$(MYSQL_PASSWORD)
 
 .PHONY: dump-schema update-schema # 既存のファイルがあっても上書きできるようにする
 

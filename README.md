@@ -5,3 +5,5 @@
 ```
 go run cmd/apiserver/main.go
 ```
+
+## dependency rule

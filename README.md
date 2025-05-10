@@ -20,7 +20,7 @@ make apply-schema
 ## start api server
 
 ```
-go run cmd/apiserver/main.go
+go run cmd/apiserver/router.go
 ```
 
 ## dependency rule

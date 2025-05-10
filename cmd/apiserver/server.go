@@ -15,7 +15,9 @@ func main() {
 
 	// Routes
 	e.GET("/", hello)
-	e.POST("/v1/login", login.Handler)
+
+	v1 := e.Group("/v1")
+	v1.POST("/login", login.Handler)
 
 	// Start server
 	if err := e.Start(":8080"); err != nil && !errors.Is(err, http.ErrServerClosed) {

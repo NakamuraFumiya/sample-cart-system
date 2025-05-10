@@ -5,6 +5,7 @@ import (
 	"log/slog"
 	"net/http"
 
+	"github.com/fumiyanakamura/sample-cart-system/userinterface/externalapi/v1/auth/login"
 	"github.com/labstack/echo/v4"
 )
 
@@ -14,6 +15,7 @@ func main() {
 
 	// Routes
 	e.GET("/", hello)
+	e.POST("/v1/login", login.Handler)
 
 	// Start server
 	if err := e.Start(":8080"); err != nil && !errors.Is(err, http.ErrServerClosed) {

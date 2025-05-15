@@ -5,11 +5,16 @@ import (
 	"gorm.io/gorm"
 )
 
+var gormHandler *gorm.DB
+
 func GetInstance() (*gorm.DB, error) {
-	dsn := ""
-	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
-	if err != nil {
-		return nil, err
+	if gormHandler == nil {
+		dsn := "development_user:development_password@tcp(127.0.0.1:3306)/development_database?charset=utf8mb4&parseTime=True&loc=Local"
+		db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+		if err != nil {
+			return nil, err
+		}
+		gormHandler = db
 	}
-	return db, nil
+	return gormHandler, nil
 }

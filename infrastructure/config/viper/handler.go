@@ -8,7 +8,7 @@ import (
 	"github.com/spf13/viper"
 )
 
-func Load() config.MySQLConfig {
+func Load() config.Config {
 	viper.SetConfigName("local")
 	viper.SetConfigType("yaml")
 	viper.AddConfigPath("config")
@@ -16,6 +16,12 @@ func Load() config.MySQLConfig {
 		panic(fmt.Errorf("fatal error config file: %w", err))
 	}
 
+	return config.Config{
+		MySQLConfig: BindMySQLConfig(),
+	}
+}
+
+func BindMySQLConfig() config.MySQLConfig {
 	// map → JSON
 	// JSONにエンコードする
 	jsonData, err := json.Marshal(viper.Get("rdb.mysql"))

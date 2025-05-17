@@ -21,6 +21,7 @@ func Load() config.Config {
 	}
 }
 
+// FIXME: Generics使ってみよう
 func BindMySQLConfig() config.MySQLConfig {
 	// map → JSON
 	// JSONにエンコードする

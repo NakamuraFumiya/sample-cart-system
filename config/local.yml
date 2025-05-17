@@ -1,0 +1,9 @@
+rdb:
+  mysql:
+    database: development_database
+    root_password: development_root_password
+    user: development_user
+    password: development_password
+    host: 127.0.0.1
+    port: 3306
+

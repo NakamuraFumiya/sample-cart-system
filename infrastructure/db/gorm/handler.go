@@ -11,7 +11,7 @@ var gormHandler *gorm.DB
 // FIXME: スレッドセーフになっていないので修正する
 // FIXME: 環境変数から読めるようにする
 func GetInstance() (*gorm.DB, error) {
-	viper.A()
+	viper.Load()
 	if gormHandler == nil {
 		dsn := "development_user:development_password@tcp(127.0.0.1:3306)/development_database?charset=utf8mb4&parseTime=True&loc=Local"
 		db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})

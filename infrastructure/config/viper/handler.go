@@ -17,25 +17,24 @@ func Load() *config.Config {
 	}
 
 	return &config.Config{
-		MySQLConfig: *GetMySQLConfig(),
+		MySQLConfig: *GetConfig[config.MySQLConfig]("rdb.mysql"),
 	}
 }
 
-// FIXME: Generics使ってみよう
-func GetMySQLConfig() *config.MySQLConfig {
+func GetConfig[T any](path string) *T {
 	// map → JSON
 	// JSONにエンコードする
-	jsonData, err := json.Marshal(viper.Get("rdb.mysql"))
+	jsonData, err := json.Marshal(viper.Get(path))
 	if err != nil {
 		panic(fmt.Errorf("json marshal error: %w", err))
 	}
 
 	// JSON → struct
 	// 構造体にデコードする
-	var mysqlConfig config.MySQLConfig
-	if err := json.Unmarshal(jsonData, &mysqlConfig); err != nil {
+	var config T
+	if err := json.Unmarshal(jsonData, &config); err != nil {
 		panic(fmt.Errorf("json unmarshal error: %w", err))
 	}
 
-	return &mysqlConfig
+	return &config
 }

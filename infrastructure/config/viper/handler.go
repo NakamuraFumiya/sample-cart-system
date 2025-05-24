@@ -8,7 +8,7 @@ import (
 	"github.com/spf13/viper"
 )
 
-func Load() *config.Config {
+func LoadConfig() *config.Config {
 	viper.SetConfigName("local")
 	viper.SetConfigType("yaml")
 	viper.AddConfigPath("config")

@@ -19,6 +19,7 @@ func main() {
 	// Routes
 	v1.RegisterRoutes(e)
 
+	// FIXME: viperのインスタンスを一度だけ作って、あとはそれを使いまわせるようにする
 	// DB接続確認(初期化)
 	if _, err := gorm.GetInstance(); err != nil {
 		panic(fmt.Sprintf("failed to initialize database connection: %v", err))

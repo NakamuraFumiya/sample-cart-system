@@ -17,7 +17,8 @@ func LoadConfig() *config.Config {
 	}
 
 	return &config.Config{
-		MySQLConfig: *GetConfig[config.MySQLConfig]("rdb.mysql"),
+		ServerConfig: *GetConfig[config.ServerConfig]("server"),
+		MySQLConfig:  *GetConfig[config.MySQLConfig]("rdb.mysql"),
 	}
 }
 

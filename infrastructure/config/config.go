@@ -1,5 +1,6 @@
 package config
 
 type Config struct {
-	MySQLConfig MySQLConfig
+	ServerConfig ServerConfig
+	MySQLConfig  MySQLConfig
 }

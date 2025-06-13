@@ -66,7 +66,7 @@ CREATE TABLE `purchase_histories` (
   `price` mediumint unsigned NOT NULL,
   `count` tinyint unsigned NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `deleted_at` datetime DEFAULT NULL,
+  `canceled_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_purchase_histories_users_user_id` (`user_id`),
   KEY `fk_purchase_histories_products_product_id` (`product_id`),
@@ -99,4 +99,4 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-06-13 13:49:29
+-- Dump completed on 2025-06-13 13:53:50

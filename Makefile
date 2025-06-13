@@ -9,7 +9,8 @@ MYSQL_CONN = -h $(MYSQL_HOST) -P $(MYSQL_PORT) -u $(MYSQL_USER) -p$(MYSQL_PASSWO
 .PHONY: dump-schema apply-schema
 
 dump-schema: # 現在のDBスキーマをdump（DROPなし）
-	$(MYSQL_DUMP_CMD) --no-data --skip-add-drop-table --no-tablespaces $(MYSQL_DATABASE) > db/structure.sql
+	$(MYSQL_DUMP_CMD) --no-data --skip-add-drop-table --no-tablespaces $(MYSQL_DATABASE) | \
+	sed 's/ AUTO_INCREMENT=[0-9]*//' > db/structure.sql
 
 apply-schema: # structure.sqlとDBの差分を検出して適用（破壊的でない）
 	cat db/structure.sql | mysqldef $(MYSQL_CONN)

@@ -1,0 +1,52 @@
+openapi: 3.0.4
+info:
+  title: 内部API
+  description: オンラインカートシステムが利用する内部API
+  version: 1.0.0
+
+# servers:
+#   - url: http://api.example.com/v1
+#     description: Optional server description, e.g. Main (production) server
+#   - url: http://staging-api.example.com
+#     description: Optional server description, e.g. Internal staging server for testing
+
+paths:
+  /v1/users:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userCode:
+                  $ref: "#/components/schemas/userCode"
+                password:
+                  $ref: "#/components/schemas/password"
+              required:
+                - userCode
+                - password
+      responses:
+        "201":
+          description: ユーザーの登録成功
+        "400":
+          description: バリデーションエラー
+
+components:
+  schemas:
+    userCode:
+      type: string
+      description: 任意のユーザーコード
+      example: user_code_1
+      minLength: 8
+      maxLength: 30
+      pattern: "^[a-zA-Z0-9_]+$"
+    password:
+      type: string
+      description: 任意のパスワード（8〜64文字、英数記号）
+      example: dhfh34uFds
+      minLength: 8
+      maxLength: 64
+      pattern: ^[\x21-\x7E]{8,64}$
+        

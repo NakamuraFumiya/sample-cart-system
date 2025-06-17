@@ -24,6 +24,12 @@ make apply-schema
 go run cmd/apiserver/server.go
 ```
 
+### code generate
+Code generation using oapi-codegen
+```
+go generate -tags=tools ./...
+```
+
 ## dependency rule
 
 ## API tech stack

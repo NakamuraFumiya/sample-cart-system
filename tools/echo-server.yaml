@@ -2,5 +2,5 @@ package: api
 generate:
   echo-server: true
   models: true
-output: ../oapigen/gen.go
+output: ../openapigen/gen.go
 

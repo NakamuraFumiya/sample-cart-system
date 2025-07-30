@@ -1,12 +1,12 @@
 package v1
 
 import (
-	"github.com/fumiyanakamura/sample-cart-system/userinterface/externalapi/v1/auth/login"
-	cartCreate "github.com/fumiyanakamura/sample-cart-system/userinterface/externalapi/v1/cart/create"
-	cartDetail "github.com/fumiyanakamura/sample-cart-system/userinterface/externalapi/v1/cart/delete"
-	cartDelete "github.com/fumiyanakamura/sample-cart-system/userinterface/externalapi/v1/cart/detail"
-	productDetail "github.com/fumiyanakamura/sample-cart-system/userinterface/externalapi/v1/product/detail"
-	purchaseCreate "github.com/fumiyanakamura/sample-cart-system/userinterface/externalapi/v1/purchase/create"
+	"github.com/fumiyanakamura/sample-cart-system/presentation/externalapi/v1/auth/login"
+	cartCreate "github.com/fumiyanakamura/sample-cart-system/presentation/externalapi/v1/cart/create"
+	cartDetail "github.com/fumiyanakamura/sample-cart-system/presentation/externalapi/v1/cart/delete"
+	cartDelete "github.com/fumiyanakamura/sample-cart-system/presentation/externalapi/v1/cart/detail"
+	productDetail "github.com/fumiyanakamura/sample-cart-system/presentation/externalapi/v1/product/detail"
+	purchaseCreate "github.com/fumiyanakamura/sample-cart-system/presentation/externalapi/v1/purchase/create"
 	"github.com/labstack/echo/v4"
 )
 

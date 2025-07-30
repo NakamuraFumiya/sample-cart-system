@@ -8,7 +8,7 @@ import (
 
 	"github.com/fumiyanakamura/sample-cart-system/infrastructure/config/viper"
 	"github.com/fumiyanakamura/sample-cart-system/infrastructure/db/gorm"
-	v1 "github.com/fumiyanakamura/sample-cart-system/userinterface/externalapi/v1"
+	v1 "github.com/fumiyanakamura/sample-cart-system/presentation/externalapi/v1"
 	"github.com/labstack/echo/v4"
 )
 

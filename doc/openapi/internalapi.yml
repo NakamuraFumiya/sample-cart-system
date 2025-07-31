@@ -14,3 +14,20 @@ paths:
   /v1/users:
     $ref: "./paths/v1/users/post.yml"
 
+components:
+  schemas:
+    usercode:
+      type: string
+      description: 任意のユーザーコード
+      example: user_code_1
+      minlength: 8
+      maxlength: 30
+      pattern: "^[a-za-z0-9_]+$"
+    password:
+      type: string
+      description: 任意のパスワード（8〜64文字、英数記号）
+      example: dhfh34ufds
+      minlength: 8
+      maxlength: 64
+      pattern: ^[\x21-\x7e]{8,64}$
+

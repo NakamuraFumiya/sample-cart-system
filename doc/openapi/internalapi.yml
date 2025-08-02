@@ -12,6 +12,7 @@ info:
 
 paths:
   /v1/users:
+    summary: 会員登録API（ユーザー作成）
     $ref: "./paths/v1/users/post.yml"
 
 components:

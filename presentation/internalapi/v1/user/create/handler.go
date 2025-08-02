@@ -1,4 +1,4 @@
-package signup
+package create
 
 import (
 	"net/http"
@@ -7,5 +7,5 @@ import (
 )
 
 func Handler(c echo.Context) error {
-	return c.String(http.StatusOK, "signup success")
+	return c.String(http.StatusOK, "sucess")
 }

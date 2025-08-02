@@ -2,20 +2,20 @@ package v1
 
 import (
 	"github.com/fumiyanakamura/sample-cart-system/presentation/internalapi/v1/auth/login"
-	"github.com/fumiyanakamura/sample-cart-system/presentation/internalapi/v1/auth/signup"
 	cartCreate "github.com/fumiyanakamura/sample-cart-system/presentation/internalapi/v1/cart/create"
 	cartDetail "github.com/fumiyanakamura/sample-cart-system/presentation/internalapi/v1/cart/delete"
 	cartDelete "github.com/fumiyanakamura/sample-cart-system/presentation/internalapi/v1/cart/detail"
 	productDetail "github.com/fumiyanakamura/sample-cart-system/presentation/internalapi/v1/product/detail"
 	purchaseCreate "github.com/fumiyanakamura/sample-cart-system/presentation/internalapi/v1/purchase/create"
+	userCreate "github.com/fumiyanakamura/sample-cart-system/presentation/internalapi/v1/user/create"
 	"github.com/labstack/echo/v4"
 )
 
 func RegisterRoutes(e *echo.Echo) {
 	v1 := e.Group("/v1")
 
-	// signup
-	v1.POST("/signup", signup.Handler)
+	// users
+	v1.POST("/users", userCreate.Handler)
 
 	// login
 	v1.POST("/login", login.Handler)

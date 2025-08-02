@@ -1,4 +1,4 @@
-package v1
+package router
 
 import (
 	"github.com/fumiyanakamura/sample-cart-system/presentation/internalapi/v1/auth/login"

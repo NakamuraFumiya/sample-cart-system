@@ -13,19 +13,18 @@ import (
 )
 
 func main() {
-	// Echo instance
+	// Echoインスタンスの生成
 	e := echo.New()
 
-	// Routes
+	// ルートの登録
 	router.RegisterRoutes(e)
 
-	// FIXME: viperのインスタンスを一度だけ作って、あとはそれを使いまわせるようにする
 	// DB接続確認(初期化)
 	if _, err := gorm.GetInstance(); err != nil {
 		panic(fmt.Sprintf("failed to initialize database connection: %v", err))
 	}
 
-	// Start server
+	// APIサーバーの起動
 	serverConfig := viper.LoadConfig().ServerConfig
 	if err := e.Start(fmt.Sprintf("%s:%d", serverConfig.Host, serverConfig.Port)); err != nil && !errors.Is(err, http.ErrServerClosed) {
 		slog.Error("failed to start server", "error", err)

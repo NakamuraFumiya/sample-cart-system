@@ -17,17 +17,22 @@ Update the local database schema based on the contents of structure.sql
 make apply-schema
 ```
 
+### Set .env file
+```
+mv .env.sample .env
+```
+
 ## Using
 ### start api server
 
 ```
-go run cmd/apiserver/server.go
+make server
 ```
 
 ### code generate
 Code generation using oapi-codegen
 ```
-go generate -tags=tools ./...
+make generate
 ```
 
 ## dependency rule

@@ -16,7 +16,7 @@ apply-schema: # structure.sqlとDBの差分を検出して適用（破壊的で�
 	cat db/structure.sql | mysqldef $(MYSQL_CONN)
 
 server: # APIサーバーの起動
-	go run cmd/apiserver/server.go
+	air -c .air.toml
 
 generate: # oapi-codegenによるコード自動生成
 	go generate -tags=tools ./...

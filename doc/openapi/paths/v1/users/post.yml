@@ -35,3 +35,4 @@ components:
       minlength: 8
       maxlength: 64
       pattern: ^[\x21-\x7e]{8,64}$
+

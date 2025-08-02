@@ -15,3 +15,6 @@ dump-schema: # 現在のDBスキーマをdump（DROPなし）
 apply-schema: # structure.sqlとDBの差分を検出して適用（破壊的でない）
 	cat db/structure.sql | mysqldef $(MYSQL_CONN)
 
+generate: # oapi-codegenによるコード自動生成
+	go generate -tags=tools ./...
+

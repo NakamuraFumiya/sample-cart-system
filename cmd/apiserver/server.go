@@ -8,7 +8,7 @@ import (
 
 	"github.com/fumiyanakamura/sample-cart-system/infrastructure/config/viper"
 	"github.com/fumiyanakamura/sample-cart-system/infrastructure/db/gorm"
-	v1 "github.com/fumiyanakamura/sample-cart-system/presentation/internalapi/v1"
+	"github.com/fumiyanakamura/sample-cart-system/presentation/router"
 	"github.com/labstack/echo/v4"
 )
 
@@ -17,7 +17,7 @@ func main() {
 	e := echo.New()
 
 	// Routes
-	v1.RegisterRoutes(e)
+	router.RegisterRoutes(e)
 
 	// FIXME: viperのインスタンスを一度だけ作って、あとはそれを使いまわせるようにする
 	// DB接続確認(初期化)

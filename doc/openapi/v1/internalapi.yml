@@ -13,7 +13,26 @@ info:
 paths:
   /v1/users:
     summary: 会員登録API（ユーザー作成）
-    $ref: "./paths/v1/users/post.yml"
+    post:
+      requestbody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                usercode:
+                  $ref: "#/components/schemas/usercode"
+                password:
+                  $ref: "#/components/schemas/password"
+              required:
+                - usercode
+                - password
+      responses:
+        "201":
+          description: ユーザーの登録成功
+        "400":
+          description: バリデーションエラー
 
 components:
   schemas:

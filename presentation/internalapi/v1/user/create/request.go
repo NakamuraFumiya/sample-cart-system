@@ -14,7 +14,7 @@ func toRequest(ctx echo.Context) (*Request, error) {
 	if err != nil {
 		return nil, err
 	}
-	if err := Validate(ctx, req); err != nil {
+	if err := Validate(ctx, *req); err != nil {
 		return nil, err
 	}
 	return req, nil
@@ -28,6 +28,6 @@ func Bind[T any](ctx echo.Context, req T) (*T, error) {
 	return &req, nil
 }
 
-func Validate(ctx echo.Context, req *Request) error {
-	return ctx.Validate(req)
+func Validate[T any](ctx echo.Context, req T) error {
+	return ctx.Validate(&req)
 }

@@ -10,7 +10,7 @@ type Request struct {
 }
 
 func toRequest(ctx echo.Context) (*Request, error) {
-	req, err := Bind(ctx)
+	req, err := Bind(ctx, Request{})
 	if err != nil {
 		return nil, err
 	}
@@ -21,12 +21,11 @@ func toRequest(ctx echo.Context) (*Request, error) {
 }
 
 // TODO: 共通処理に移動させる
-func Bind(ctx echo.Context) (*Request, error) {
-	req := new(Request)
-	if err := ctx.Bind(req); err != nil {
+func Bind[T any](ctx echo.Context, req T) (*T, error) {
+	if err := ctx.Bind(&req); err != nil {
 		return nil, err
 	}
-	return req, nil
+	return &req, nil
 }
 
 func Validate(ctx echo.Context, req *Request) error {

@@ -2,6 +2,7 @@ package create
 
 import (
 	api "github.com/fumiyanakamura/sample-cart-system/openapigen"
+	"github.com/fumiyanakamura/sample-cart-system/presentation/util"
 	"github.com/labstack/echo/v4"
 )
 
@@ -10,24 +11,12 @@ type Request struct {
 }
 
 func toRequest(ctx echo.Context) (*Request, error) {
-	req, err := Bind(ctx, Request{})
+	req, err := util.Bind(ctx, Request{})
 	if err != nil {
 		return nil, err
 	}
-	if err := Validate(ctx, *req); err != nil {
+	if err := util.Validate(ctx, *req); err != nil {
 		return nil, err
 	}
 	return req, nil
-}
-
-// TODO: 共通処理に移動させる
-func Bind[T any](ctx echo.Context, req T) (*T, error) {
-	if err := ctx.Bind(&req); err != nil {
-		return nil, err
-	}
-	return &req, nil
-}
-
-func Validate[T any](ctx echo.Context, req T) error {
-	return ctx.Validate(&req)
 }

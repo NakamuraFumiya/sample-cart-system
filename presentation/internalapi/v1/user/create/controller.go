@@ -18,7 +18,8 @@ func (c *Controller) Do(ctx echo.Context) error {
 	if err != nil {
 		return err
 	}
-	fmt.Println(req)
+	fmt.Println(req.Usercode)
+	fmt.Println(req.Password)
 
 	return ctx.String(http.StatusOK, "user create success")
 }

@@ -1,18 +1,49 @@
 package model
 
-import "github.com/fumiyanakamura/sample-cart-system/core/domain/identifier"
+import (
+	"errors"
+	"regexp"
+
+	"github.com/fumiyanakamura/sample-cart-system/core/domain/identifier"
+)
+
+const UserUserCodeRegex = "^[a-za-z0-9_]+$"
+const UserPasswordRegex = "^[\x21-\x7e]{8,64}$"
 
 type User struct {
 	id       identifier.UserID
-	name     string
+	userCode string
 	password string
 }
 
-func NewUser() (*User, error) {
-	return nil, nil
+func NewUser(
+	userCode string,
+	password string,
+) (*User, error) {
+	// ユーザーコードの検証
+	userCodeMatched, err := regexp.MatchString(UserUserCodeRegex, userCode)
+	if err != nil {
+		return nil, err
+	}
+	if !userCodeMatched {
+		return nil, errors.New("invalid userCode")
+	}
+	// パスワードの検証
+	passwordMatched, err := regexp.MatchString(UserPasswordRegex, password)
+	if err != nil {
+		return nil, err
+	}
+	if !passwordMatched {
+		return nil, errors.New("invalid password")
+	}
+
+	return &User{
+		userCode: userCode,
+		password: password,
+	}, nil
 }
 
 func (u *User) ID() identifier.UserID { return u.id }
-func (u *User) Name() string          { return u.name }
+func (u *User) UserCode() string      { return u.userCode }
 
-func (u *User) SetName(name string) { u.name = name }
+func (u *User) SetUserCode(userCode string) { u.userCode = userCode }

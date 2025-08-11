@@ -4,6 +4,7 @@ import (
 	"errors"
 	"regexp"
 
+	"github.com/fumiyanakamura/sample-cart-system/core/domain/model"
 	api "github.com/fumiyanakamura/sample-cart-system/openapigen"
 	"github.com/fumiyanakamura/sample-cart-system/presentation/util"
 	"github.com/labstack/echo/v4"
@@ -18,15 +19,15 @@ func toRequest(ctx echo.Context) (*api.PostV1UsersJSONBody, error) {
 		return nil, err
 	}
 	// ユーザーコードの検証
-	usercodeMatched, err := regexp.MatchString("^[a-za-z0-9_]+$", req.Usercode)
+	userCodeMatched, err := regexp.MatchString(model.UserUserCodeRegex, req.Usercode)
 	if err != nil {
 		return nil, err
 	}
-	if !usercodeMatched {
-		return nil, errors.New("invalid usercode")
+	if !userCodeMatched {
+		return nil, errors.New("invalid userCode")
 	}
 	// パスワードの検証
-	passwordMatched, err := regexp.MatchString("^[\x21-\x7e]{8,64}$", req.Password)
+	passwordMatched, err := regexp.MatchString(model.UserPasswordRegex, req.Password)
 	if err != nil {
 		return nil, err
 	}

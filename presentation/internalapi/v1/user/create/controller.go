@@ -16,7 +16,7 @@ func NewController() *Controller {
 func (c *Controller) Do(ctx echo.Context) error {
 	req, err := toRequest(ctx)
 	if err != nil {
-		return err
+		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 	fmt.Println(req.Usercode)
 	fmt.Println(req.Password)

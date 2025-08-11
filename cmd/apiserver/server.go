@@ -19,8 +19,7 @@ type CustomValidator struct {
 
 func (cv *CustomValidator) Validate(target any) error {
 	if err := cv.validator.Struct(target); err != nil {
-		// Optionally, you could return the error to give each route more control over the status code
-		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
+		return err
 	}
 	return nil
 }
@@ -28,6 +27,7 @@ func (cv *CustomValidator) Validate(target any) error {
 func main() {
 	// Echoインスタンスの生成
 	e := echo.New()
+
 	// カスタムバリデータの設定
 	e.Validator = &CustomValidator{validator: validator.New()}
 

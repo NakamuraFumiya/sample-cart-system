@@ -1,4 +1,4 @@
-package v1
+package router
 
 import (
 	"github.com/fumiyanakamura/sample-cart-system/presentation/internalapi/v1/auth/login"
@@ -15,7 +15,7 @@ func RegisterRoutes(e *echo.Echo) {
 	v1 := e.Group("/v1")
 
 	// users
-	v1.POST("/users", userCreate.Handler)
+	v1.POST("/users", userCreate.NewController().Do)
 
 	// login
 	v1.POST("/login", login.Handler)

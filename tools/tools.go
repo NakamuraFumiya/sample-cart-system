@@ -7,4 +7,4 @@ import (
 	_ "github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen"
 )
 
-//go:generate go run github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen --config=echo-server.yaml ../doc/openapi/internalapi.yml
+//go:generate go run github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen --config=echo-server.yaml ../doc/openapi/v1/internalapi.yml

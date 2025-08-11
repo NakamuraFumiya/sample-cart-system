@@ -16,10 +16,10 @@ type Usercode = string
 // PostV1UsersJSONBody defines parameters for PostV1Users.
 type PostV1UsersJSONBody struct {
 	// Password 任意のパスワード（8〜64文字、英数記号）
-	Password Password `json:"password"`
+	Password Password `json:"password" validate:"required,min=8,max=64"`
 
 	// Usercode 任意のユーザーコード
-	Usercode Usercode `json:"usercode"`
+	Usercode Usercode `json:"usercode" validate:"required,min=8,max=30"`
 }
 
 // PostV1UsersJSONRequestBody defines body for PostV1Users for application/json ContentType.
